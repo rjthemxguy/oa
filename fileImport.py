@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 
 class fileClass:
     def __init__(self):
@@ -58,3 +59,7 @@ class fileClass:
 
 
                 result.close()
+
+    def get(self):
+
+        self.dataset = pd.read_csv("scratch/addressFixed.csv", header=None)
