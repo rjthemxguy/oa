@@ -4,6 +4,6 @@ import fileImport as f
 extract = f.fileClass()
 
 
-extract.openInput("vclean.csv")
+extract.openInput("claims1.csv")
 extract.fixAddress("cleaned.csv")
-extract.get()
+claims = extract.get()

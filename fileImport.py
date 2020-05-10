@@ -63,3 +63,5 @@ class fileClass:
     def get(self):
 
         self.dataset = pd.read_csv("scratch/addressFixed.csv", header=None)
+
+        return(self.dataset)
