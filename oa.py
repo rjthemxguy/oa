@@ -15,7 +15,7 @@ for i in range(len(claims)):
 
     if claims.iloc[i, 362] == currentAcession:
         x += 1
-        claim.addRow(claims)
+        claim.addRow(claims.loc[i])
         print(x)
     else:
         currentAcession = claims.iloc[i, 362]

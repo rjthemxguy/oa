@@ -5,4 +5,4 @@ class claimClass:
 
 
     def addRow(self, claimRow):
-        pass
+        print(claimRow)
