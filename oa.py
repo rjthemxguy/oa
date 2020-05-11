@@ -20,4 +20,6 @@ for i in range(len(claims)):
 
     else:
         currentAccession = claims.iloc[i, con.ACCESSION_NUMBER]
+        claim = c.claimClass()
+        claim.addRow(claims.loc[i])
 
