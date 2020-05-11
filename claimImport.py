@@ -48,10 +48,15 @@ class claimClass:
             "TO_DATE_SERVICE": claimRow[con.TO_DATE_SERVICE],
             "CPT": claimRow[con.CPT],
             "EMG": claimRow[con.EMG],
+            "PRICE": "",
             "REFER_PHY_ID": claimRow[con.REFER_PHY_ID]
         }
 
         self.rowList.append(self.rowDict)
+
+    def getPrices(self):
+        pass
+
 
 
     def rowCount(self):

@@ -25,5 +25,3 @@ for i in range(len(claims)):
         claim = c.claimClass()
         claim.addRow(claims.loc[i])
 
-for claim in claimList:
-    print(claim.rowCount())
