@@ -51,6 +51,8 @@ class claimClass:
             "REFER_PHY_ID": claimRow[con.REFER_PHY_ID]
         }
 
+        self.rowList.append(self.rowDict)
+
 
     def rowCount(self):
         pass
