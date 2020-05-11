@@ -55,4 +55,4 @@ class claimClass:
 
 
     def rowCount(self):
-        pass
+        return len(self.rowList)

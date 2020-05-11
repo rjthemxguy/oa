@@ -12,6 +12,7 @@ claims = extract.get()
 
 currentAccession = claims.iloc[0, con.ACCESSION_NUMBER]
 claim = c.claimClass()
+claimList = []
 
 for i in range(len(claims)):
 
@@ -19,7 +20,10 @@ for i in range(len(claims)):
         claim.addRow(claims.loc[i])
 
     else:
+        claimList.append(claim)
         currentAccession = claims.iloc[i, con.ACCESSION_NUMBER]
         claim = c.claimClass()
         claim.addRow(claims.loc[i])
 
+for claim in claimList:
+    print(claim.rowCount())
