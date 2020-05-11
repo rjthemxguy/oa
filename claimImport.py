@@ -6,3 +6,6 @@ class claimClass:
 
     def addRow(self, claimRow):
         print(claimRow)
+
+    def rowCount(self):
+        pass
