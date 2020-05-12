@@ -61,3 +61,28 @@ class claimClass:
 
     def rowCount(self):
         return len(self.rowList)
+
+    def checkForLab(self,labCode):
+
+        if labCode == "LP2":
+
+            emgCount = 0
+
+            for lp2_claim in self.rowList:
+
+                if "LP" in lp2_claim.values():
+                    emgCount += 1
+                    LPClaim = lp2_claim
+
+
+                if "LDLD" in lp2_claim.values():
+                    emgCount += 1
+                    LDLDClaim = lp2_claim
+
+
+                if emgCount == 2:
+
+                    claimList.remove(LPClaim)
+                    LDLDClaim["EMG"] = "LP2"
+
+
