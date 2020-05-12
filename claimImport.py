@@ -57,12 +57,10 @@ class claimClass:
     def getPrices(self):
         pass
 
-
-
     def rowCount(self):
         return len(self.rowList)
 
-    def checkForLab(self,labCode):
+    def checkForLab(self, labCode):
 
         if labCode == "LP2":
 
@@ -72,17 +70,49 @@ class claimClass:
 
                 if "LP" in lp2_claim.values():
                     emgCount += 1
-                    LPClaim = lp2_claim
-
+                    LP= lp2_claim
 
                 if "LDLD" in lp2_claim.values():
                     emgCount += 1
-                    LDLDClaim = lp2_claim
-
+                    LDLD = lp2_claim
 
                 if emgCount == 2:
+                    lp2_claim.remove(LP)
+                    LDLD["EMG"] = "LP2"
+                    break
 
-                    claimList.remove(LPClaim)
-                    LDLDClaim["EMG"] = "LP2"
+        if labCode == "LP":
 
+            emgCount = 0
+            listCount = 0
+
+
+            for claim in self.rowList:
+
+                # check for 3 tests that make up panel
+                if "HDL" in claim.values():
+                    emgCount += 1
+                    HDL = claim
+
+
+                if "CHOL" in claim.values():
+                    emgCount += 1
+                    CHOL = claim
+
+
+                if "TRIG2" in claim.values():
+                    emgCount += 1
+                    TRIGclaim = claim
+
+                if emgCount == 3:
+                    TRIGclaim["EMG"] = "LP"
+                    TRIGclaim["CPT"] = "80061"
+                    self.rowList.remove(HDL)
+                    self.rowList.remove(CHOL)
+                    break
+
+
+
+                print(claim)
+                listCount += 1
 
