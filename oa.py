@@ -29,3 +29,4 @@ for i in range(len(claims)):
 for claim in claimList:
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
+    claim.getDiagCodes()

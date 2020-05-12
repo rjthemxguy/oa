@@ -5,6 +5,8 @@ class claimClass:
     def __init__(self):
         self.rowList = []
         self.rowDict = {}
+        self.diagCodeList = []
+
 
     def addRow(self, claimRow):
 
@@ -59,6 +61,20 @@ class claimClass:
 
     def rowCount(self):
         return len(self.rowList)
+
+    def getDiagCodes(self):
+
+
+
+        for claim in self.rowList:
+
+            if claim["EMG"] in self.diagCodeList:
+                pass
+
+            else:
+                self.diagCodeList.append(claim["EMG"])
+
+
 
     def checkForLab(self, labCode):
 
