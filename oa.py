@@ -6,7 +6,7 @@ import constants as con
 extract = f.fileClass()
 
 
-extract.openInput("claims1.csv")
+extract.openInput("claims5.csv")
 extract.fixAddress("cleaned.csv")
 claims = extract.get()
 
@@ -27,6 +27,7 @@ for i in range(len(claims)):
 
 
 for claim in claimList:
+    
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()

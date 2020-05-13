@@ -39,20 +39,21 @@ class fileClass:
                         row[3] = row[3] + row[4]
                         del row[4]
 
-                    if self.__numIn(row[27]) == True:
-                        row[26] = row[26] + row[27]
-                        del row[27]
+                    if self.__numIn(row[25]) == True:
+                        row[24] = row[24] + row[25]
+                        del row[25]
 
-                    if self.__numIn(row[33]) == True:
-                        row[32] = row[32] + row[33]
-                        del row[33]
+
+                    if self.__numIn(row[31]) == True:
+                        row[30] = row[30] + row[31]
+                        del row[31]
 
                     if "SUITE" in row[345]:
                         row[344] = row[344] + row[345]
                         row[345] = ""
 
                         del row[345]
-
+                        print(row[30])
 
 
                     writer.writerow(row)
