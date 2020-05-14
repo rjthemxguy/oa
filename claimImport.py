@@ -1,4 +1,5 @@
 import constants as con
+import math
 
 
 class claimClass:
@@ -63,19 +64,30 @@ class claimClass:
         return len(self.rowList)
 
     def getDiagCodes(self):
-
-        self.diagCodeList.append(self.rowList[0]["DIAG_1"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_2"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_3"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_4"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_5"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_6"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_7"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_8"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_9"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_10"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_11"])
-        self.diagCodeList.append(self.rowList[0]["DIAG_12"])
+        if type(self.rowList[0]["DIAG_1"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_1"])
+        if type(self.rowList[0]["DIAG_2"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_2"])
+        if type(self.rowList[0]["DIAG_3"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_3"])
+        if type(self.rowList[0]["DIAG_4"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_4"])
+        if type(self.rowList[0]["DIAG_5"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_5"])
+        if type(self.rowList[0]["DIAG_6"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_6"])
+        if type(self.rowList[0]["DIAG_7"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_7"])
+        if type(self.rowList[0]["DIAG_8"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_8"])
+        if type(self.rowList[0]["DIAG_9"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_9"])
+        if type(self.rowList[0]["DIAG_10"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_10"])
+        if type(self.rowList[0]["DIAG_11"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_11"])
+        if type(self.rowList[0]["DIAG_12"]) == str:
+            self.diagCodeList.append(self.rowList[0]["DIAG_12"])
 
 
 
