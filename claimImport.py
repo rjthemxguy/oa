@@ -64,13 +64,19 @@ class claimClass:
 
     def getDiagCodes(self):
 
-        for claim in self.rowList:
+        self.diagCodeList.append(self.rowList[0]["DIAG_1"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_2"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_3"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_4"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_5"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_6"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_7"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_8"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_9"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_10"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_11"])
+        self.diagCodeList.append(self.rowList[0]["DIAG_12"])
 
-            if claim["EMG"] in self.diagCodeList:
-                pass
-
-            else:
-                self.diagCodeList.append(claim["EMG"])
 
 
 
