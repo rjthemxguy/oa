@@ -1,5 +1,6 @@
 import constants as con
 import math
+import os
 
 
 class claimClass:
@@ -53,7 +54,7 @@ class claimClass:
             "EMG": claimRow[con.EMG],
             "PRICE": "",
             "REFER_PHY_ID": claimRow[con.REFER_PHY_ID],
-            "ACCESSION_NUMBER": claimRow[con.ACCESSION_NUMBER]
+            "ACCESSION_NUMBER": claimRow[con.ACCESSION_NUMBER],
             "DIAG_POINTER": ""
         }
 

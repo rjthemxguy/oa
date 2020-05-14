@@ -1,6 +1,7 @@
 import fileImport as f
 import claimImport as c
 import constants as con
+from os import system
 
 extract = f.fileClass()
 
@@ -34,6 +35,5 @@ for claim in claimList:
     claim.checkForLab("LP")
     claim.getDiagCodes()
     print(claim.accession_number)
-
 
 
