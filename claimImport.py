@@ -54,6 +54,7 @@ class claimClass:
             "PRICE": "",
             "REFER_PHY_ID": claimRow[con.REFER_PHY_ID],
             "ACCESSION_NUMBER": claimRow[con.ACCESSION_NUMBER]
+            "DIAG_POINTER": ""
         }
 
         self.rowList.append(rowDict)
