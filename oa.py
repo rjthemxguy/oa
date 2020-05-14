@@ -18,6 +18,8 @@ for i in range(len(claims)):
     if claims.iloc[i, con.ACCESSION_NUMBER] == currentAccession:
         claim.addRow(claims.loc[i])
 
+
+
     else:
         claimList.append(claim)
         currentAccession = claims.iloc[i, con.ACCESSION_NUMBER]
@@ -25,10 +27,13 @@ for i in range(len(claims)):
         claim.addRow(claims.loc[i])
 
 
+
 for claim in claimList:
     
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
-    print(claim.diagCodeList)
+    print(claim.accession_number)
+
+
 

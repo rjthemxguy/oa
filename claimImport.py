@@ -6,6 +6,7 @@ class claimClass:
     def __init__(self):
         self.rowList = []
         self.diagCodeList = []
+        self.accession_number = 0
 
 
     def addRow(self, claimRow):
@@ -51,10 +52,12 @@ class claimClass:
             "CPT": claimRow[con.CPT],
             "EMG": claimRow[con.EMG],
             "PRICE": "",
-            "REFER_PHY_ID": claimRow[con.REFER_PHY_ID]
+            "REFER_PHY_ID": claimRow[con.REFER_PHY_ID],
+            "ACCESSION_NUMBER": claimRow[con.ACCESSION_NUMBER]
         }
 
         self.rowList.append(rowDict)
+        self.accession_number = claimRow[con.ACCESSION_NUMBER]
 
     def getPrices(self):
         pass
