@@ -2,6 +2,7 @@ import fileImport as f
 import claimImport as c
 import constants as con
 from os import system
+from colorama import Fore, Back, Style
 
 extract = f.fileClass()
 

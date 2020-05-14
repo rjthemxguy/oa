@@ -1,7 +1,10 @@
 import constants as con
 import math
 from os import system
+from colorama import init
+from colorama import Fore, Back, Style
 
+init()
 
 class claimClass:
     def __init__(self):
@@ -15,15 +18,16 @@ class claimClass:
 
         EMGCount = 0
 
+
         for row in self.rowList:
             system("clear")
-            print("Please select the correct Diagnostic Code for each EMG Code\n")
-            print("ACCESSION #: " + str(self.accession_number) + "\n")
-            print("Patient: " + row["PATIENT_LAST"] + "\n")
-            print("EMG Code: " + str(row["EMG"]) + "\n")
+            print(Fore.GREEN + "Please select the correct Diagnostic Code for each EMG Code\n")
+            print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
+            print(Fore.GREEN + "Patient: " + row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
+            print(Fore.YELLOW + "EMG Code: " + str(row["EMG"]) + "  "  + Fore.BLUE + str(EMGCount + 1) + " of " + str(len(self.rowList)) + "\n")
 
             for i in range(len(self.diagCodeList)):
-                print("[" + str(i + 1) + "] " + self.diagCodeList[i])
+                print(Fore.BLUE + "[" + str(i + 1) + "] " + self.diagCodeList[i])
 
             x = int(input())
             self.assignedDiagCodes.append(self.diagCodeList[x-1])
@@ -33,12 +37,12 @@ class claimClass:
 
             if EMGCount == len(self.rowList):
                 system("clear")
-                print("Please ensure the diagnosis codes matches the EMG codes for this claim \n")
-                print("ACCESSION #: " + str(self.accession_number) + "\n")
-                print("Patient: " + row["PATIENT_LAST"] + "\n")
+                print(Fore.GREEN + "Please ensure the diagnosis codes matches the EMG codes for this claim \n")
+                print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
+                print(Fore.GREEN + "Patient: " +  row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
 
                 for i in range(len(self.EMGList)):
-                    print(self.EMGList[i].ljust(10," ") + " - " + self.assignedDiagCodes[i])
+                    print(Fore.BLUE + self.EMGList[i].ljust(10," ") + " - " + self.assignedDiagCodes[i])
 
                 x = input()
 
