@@ -6,6 +6,7 @@ from colorama import Fore, Back, Style
 
 init()
 
+
 class claimClass:
     def __init__(self):
         self.rowList = []
@@ -18,19 +19,19 @@ class claimClass:
 
         EMGCount = 0
 
-
         for row in self.rowList:
             system("clear")
             print(Fore.GREEN + "Please select the correct Diagnostic Code for each EMG Code\n")
             print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
             print(Fore.GREEN + "Patient: " + row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
-            print(Fore.YELLOW + "EMG Code: " + Fore.WHITE + str(row["EMG"]) + "  "  + Fore.BLUE + str(EMGCount + 1) + " of " + str(len(self.rowList)) + "\n")
+            print(Fore.YELLOW + "EMG Code: " + Fore.WHITE + str(row["EMG"]).ljust(8, " ") + "  " + Fore.BLUE + str(
+                EMGCount + 1) + " of " + str(len(self.rowList)) + "\n")
 
             for i in range(len(self.diagCodeList)):
                 print(Fore.BLUE + "[" + str(i + 1) + "] " + self.diagCodeList[i])
 
             x = int(input())
-            self.assignedDiagCodes.append(self.diagCodeList[x-1])
+            self.assignedDiagCodes.append(self.diagCodeList[x - 1])
             self.EMGList.append(row["EMG"])
 
             EMGCount += 1
@@ -39,15 +40,14 @@ class claimClass:
                 system("clear")
                 print(Fore.RED + "Please ensure the diagnosis codes matches the EMG codes for this claim \n")
                 print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
-                print(Fore.GREEN + "Patient: " +  row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
+                print(Fore.GREEN + "Patient: " + row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
 
                 for i in range(len(self.EMGList)):
-                    print(Fore.BLUE + self.EMGList[i].ljust(10," ") + " - " + self.assignedDiagCodes[i])
+                    print(Fore.BLUE + self.EMGList[i].ljust(10, " ") + " - " + self.assignedDiagCodes[i])
 
-                print("\n" + Fore.GREEN + "Press [Y] to accept or [R] to re-code" )
+                print("\n" + Fore.GREEN + "Press [Y] to accept or [R] to re-code")
 
                 x = input()
-
 
     def addRow(self, claimRow):
 
