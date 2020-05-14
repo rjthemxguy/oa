@@ -35,5 +35,6 @@ for claim in claimList:
     claim.checkForLab("LP")
     claim.getDiagCodes()
     print(claim.accession_number)
+    claim.setDaigCodes()
 
 

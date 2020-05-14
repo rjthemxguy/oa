@@ -1,6 +1,6 @@
 import constants as con
 import math
-import os
+from os import system
 
 
 class claimClass:
@@ -8,6 +8,39 @@ class claimClass:
         self.rowList = []
         self.diagCodeList = []
         self.accession_number = 0
+        self.assignedDiagCodes = []
+        self.EMGList = []
+
+    def setDaigCodes(self):
+
+        EMGCount = 0
+
+        for row in self.rowList:
+            system("clear")
+            print("Please select the correct Diagnostic Code for each EMG Code\n")
+            print("ACCESSION #: " + str(self.accession_number) + "\n")
+            print("Patient: " + row["PATIENT_LAST"] + "\n")
+            print("EMG Code: " + str(row["EMG"]) + "\n")
+
+            for i in range(len(self.diagCodeList)):
+                print("[" + str(i + 1) + "] " + self.diagCodeList[i])
+
+            x = int(input())
+            self.assignedDiagCodes.append(self.diagCodeList[x-1])
+            self.EMGList.append(row["EMG"])
+
+            EMGCount += 1
+
+            if EMGCount == len(self.rowList):
+                system("clear")
+                print("Please ensure the diagnosis codes matches the EMG codes for this claim \n")
+                print("ACCESSION #: " + str(self.accession_number) + "\n")
+                print("Patient: " + row["PATIENT_LAST"] + "\n")
+
+                for i in range(len(self.EMGList)):
+                    print(self.EMGList[i].ljust(10," ") + " - " + self.assignedDiagCodes[i])
+
+                x = input()
 
 
     def addRow(self, claimRow):
@@ -93,9 +126,6 @@ class claimClass:
         if type(self.rowList[0]["DIAG_12"]) == str:
             self.diagCodeList.append(self.rowList[0]["DIAG_12"])
 
-
-
-
     def checkForLab(self, labCode):
 
         if labCode == "LP2":
@@ -106,7 +136,7 @@ class claimClass:
 
                 if "LP" in lp2_claim.values():
                     emgCount += 1
-                    LP= lp2_claim
+                    LP = lp2_claim
 
                 if "LDLD" in lp2_claim.values():
                     emgCount += 1
@@ -122,7 +152,6 @@ class claimClass:
             emgCount = 0
             listCount = 0
 
-
             for claim in self.rowList:
 
                 # check for 3 tests that make up panel
@@ -130,11 +159,9 @@ class claimClass:
                     emgCount += 1
                     HDL = claim
 
-
                 if "CHOL" in claim.values():
                     emgCount += 1
                     CHOL = claim
-
 
                 if "TRIG2" in claim.values():
                     emgCount += 1
@@ -147,7 +174,4 @@ class claimClass:
                     self.rowList.remove(CHOL)
                     break
 
-
-
                 listCount += 1
-
