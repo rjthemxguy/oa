@@ -64,8 +64,6 @@ class claimClass:
 
     def getDiagCodes(self):
 
-
-
         for claim in self.rowList:
 
             if claim["EMG"] in self.diagCodeList:
@@ -129,6 +127,5 @@ class claimClass:
 
 
 
-                print(claim)
                 listCount += 1
 

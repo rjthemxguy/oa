@@ -1,6 +1,8 @@
 import csv
 import pandas as pd
 
+
+
 class fileClass:
     def __init__(self):
 
@@ -48,12 +50,12 @@ class fileClass:
                         row[30] = row[30] + row[31]
                         del row[31]
 
-                    if "SUITE" in row[345]:
-                        row[344] = row[344] + row[345]
-                        row[345] = ""
+                    if "SUITE" in row[343]:
+                        row[342] = row[342] + row[343]
+                        row[343] = ""
 
                         del row[345]
-                        print(row[30])
+
 
 
                     writer.writerow(row)

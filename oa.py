@@ -2,7 +2,6 @@ import fileImport as f
 import claimImport as c
 import constants as con
 
-
 extract = f.fileClass()
 
 
@@ -31,3 +30,5 @@ for claim in claimList:
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
+    print(claim.diagCodeList)
+
