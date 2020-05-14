@@ -5,13 +5,12 @@ import math
 class claimClass:
     def __init__(self):
         self.rowList = []
-        self.rowDict = {}
         self.diagCodeList = []
 
 
     def addRow(self, claimRow):
 
-        self.rowDict = {
+        rowDict = {
             "INSURANCE_PLAN_NAME": claimRow[con.INSURANCE_PLAN_NAME],
             "INSURANCE_PAYER_ID": claimRow[con.INSURANCE_PAYER_ID],
             "INSURANCE_STREET_ADDR": claimRow[con.INSURANCE_STREET_ADDR],
@@ -55,7 +54,7 @@ class claimClass:
             "REFER_PHY_ID": claimRow[con.REFER_PHY_ID]
         }
 
-        self.rowList.append(self.rowDict)
+        self.rowList.append(rowDict)
 
     def getPrices(self):
         pass
