@@ -14,40 +14,74 @@ class claimClass:
         self.accession_number = 0
         self.assignedDiagCodes = []
         self.EMGList = []
+        self.diagEntryList = []
 
     def setDaigCodes(self):
 
         EMGCount = 0
 
-        for row in self.rowList:
-            system("clear")
-            print(Fore.GREEN + "Please select the correct Diagnostic Code for each EMG Code\n")
-            print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
-            print(Fore.GREEN + "Patient: " + row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
-            print(Fore.YELLOW + "EMG Code: " + Fore.WHITE + str(row["EMG"]).ljust(8, " ") + "  " + Fore.BLUE + str(
-                EMGCount + 1) + " of " + str(len(self.rowList)) + "\n")
+        while True:
 
             for i in range(len(self.diagCodeList)):
-                print(Fore.BLUE + "[" + str(i + 1) + "] " + self.diagCodeList[i])
+                self.diagEntryList.append(i + 1)
 
-            x = int(input())
-            self.assignedDiagCodes.append(self.diagCodeList[x - 1])
-            self.EMGList.append(row["EMG"])
+            print(self.diagEntryList)
 
-            EMGCount += 1
-
-            if EMGCount == len(self.rowList):
+            for row in self.rowList:
                 system("clear")
-                print(Fore.RED + "Please ensure the diagnosis codes matches the EMG codes for this claim \n")
+                print(Fore.GREEN + "Please select the correct Diagnostic Code for each EMG Code\n")
                 print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
                 print(Fore.GREEN + "Patient: " + row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
+                print(Fore.YELLOW + "EMG Code: " + Fore.WHITE + str(row["EMG"]).ljust(8, " ") + "  " + Fore.BLUE + str(
+                    EMGCount + 1) + " of " + str(len(self.rowList)) + "\n")
 
-                for i in range(len(self.EMGList)):
-                    print(Fore.BLUE + self.EMGList[i].ljust(10, " ") + " - " + self.assignedDiagCodes[i])
+                for i in range(len(self.diagCodeList)):
+                    print(Fore.BLUE + "[" + str(i + 1) + "] " + self.diagCodeList[i])
 
-                print("\n" + Fore.GREEN + "Press [Y] to accept or [R] to re-code")
+                while True:
 
-                x = input()
+                    try:
+                        x = int(input())
+
+                    except:
+                        print("Please select a number in the list")
+                        continue
+
+                    if x in self.diagEntryList:
+                        self.assignedDiagCodes.append(self.diagCodeList[x - 1])
+                        self.EMGList.append(row["EMG"])
+                        break
+
+                    else:
+                        print("Select a number in the list")
+
+                EMGCount += 1
+
+                if EMGCount == len(self.rowList):
+                    system("clear")
+                    print(Fore.RED + "Please ensure the diagnosis codes matches the EMG codes for this claim \n")
+                    print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
+                    print(Fore.GREEN + "Patient: " + row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
+
+                    for i in range(len(self.EMGList)):
+                        print(Fore.BLUE + self.EMGList[i].ljust(10, " ") + " - " + self.assignedDiagCodes[i])
+
+                    print("\n" + Fore.GREEN + "Press [Y] to accept or [R] to re-code")
+
+            x = input()
+
+
+            if x == "y":
+                break
+
+            if x == "r":
+                EMGCount = 0
+                self.assignedDiagCodes = []
+                self.EMGList = []
+                self.diagEntryList = []
+                continue
+
+
 
     def addRow(self, claimRow):
 
