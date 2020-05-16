@@ -22,6 +22,9 @@ class claimClass:
     def loadPrices(self):
         database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
 
+        for row in self.rowList:
+            database.getPrice(row["CPT"])
+
     def setMedicare(self):
             g.mode = "M"
 
