@@ -23,7 +23,8 @@ class claimClass:
         database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
 
         for row in self.rowList:
-            price = database.getPrice(row["CPT"])
+            price = database.getPrice(str(row["CPT"]))
+
 
             try:
                 row["PRICE"] = price[0]
@@ -67,7 +68,7 @@ class claimClass:
                     if x in self.diagEntryList:
                         self.assignedDiagCodes.append(self.diagCodeList[x - 1])
                         self.EMGList.append(row["EMG"])
-                        row["DIAG_POINTER"] = pointerList[x]
+                        row["DIAG_POINTER"] = pointerList[x-1]
                         break
 
                     else:

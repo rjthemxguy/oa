@@ -11,7 +11,7 @@ extract = f.fileClass()
 
 
 extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("cleaned.csv")
+extract.fixAddress("smallBatch.csv")
 claims = extract.get()
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
@@ -38,8 +38,10 @@ for claim in claimList:
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
-    claim.setDaigCodes()
     claim.loadPrices()
+    claim.setDaigCodes()
+    print(claim.rowList)
+    x = input()
 
 
 
