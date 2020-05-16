@@ -1,6 +1,6 @@
 import csv
 import pandas as pd
-
+import constants as con
 
 
 class fileClass:
@@ -50,12 +50,9 @@ class fileClass:
                         row[30] = row[30] + row[31]
                         del row[31]
 
-                    if "SUITE" in row[343]:
-                        row[342] = row[342] + row[343]
-                        row[343] = ""
-
-                        del row[345]
-
+                    if "SUITE" in row[con.SUITE_FIX_1]:
+                        row[con.SUITE_FIX_1 - 1] = row[con.SUITE_FIX_1 - 1] + row[con.SUITE_FIX_1]
+                        del row[con.SUITE_FIX_1]
 
 
                     writer.writerow(row)

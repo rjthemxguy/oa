@@ -10,7 +10,7 @@ import globals as g
 extract = f.fileClass()
 
 
-extract.openInput("claims5.csv")
+extract.openInput("051520_042420through051220_ins2.csv")
 extract.fixAddress("cleaned.csv")
 claims = extract.get()
 
@@ -34,7 +34,7 @@ for i in range(len(claims)):
 
 
 for claim in claimList:
-    claim.setMedicare()
+    #claim.setMedicare()
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
