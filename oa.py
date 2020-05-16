@@ -4,6 +4,9 @@ import constants as con
 from os import system
 from colorama import Fore, Back, Style
 
+
+
+
 extract = f.fileClass()
 
 
@@ -31,11 +34,10 @@ for i in range(len(claims)):
 
 
 for claim in claimList:
-    
+
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
-    print(claim.accession_number)
-    claim.setDaigCodes()
+    #claim.setDaigCodes()
 
 

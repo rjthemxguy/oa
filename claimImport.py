@@ -16,6 +16,9 @@ class claimClass:
         self.EMGList = []
         self.diagEntryList = []
 
+
+
+
     def setDaigCodes(self):
 
         EMGCount = 0
