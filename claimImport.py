@@ -4,6 +4,8 @@ from os import system
 from colorama import init
 from colorama import Fore, Back, Style
 import globals as g
+import mysql.connector
+import DBModule as db
 
 init()
 
@@ -16,6 +18,9 @@ class claimClass:
         self.assignedDiagCodes = []
         self.EMGList = []
         self.diagEntryList = []
+
+    def loadPrices(self):
+        database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
 
     def setMedicare(self):
             g.mode = "M"
