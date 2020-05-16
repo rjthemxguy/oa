@@ -3,6 +3,7 @@ import math
 from os import system
 from colorama import init
 from colorama import Fore, Back, Style
+import globals as g
 
 init()
 
@@ -16,8 +17,8 @@ class claimClass:
         self.EMGList = []
         self.diagEntryList = []
 
-
-
+    def setMedicare(self):
+            g.mode = "M"
 
     def setDaigCodes(self):
 

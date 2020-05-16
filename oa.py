@@ -3,7 +3,7 @@ import claimImport as c
 import constants as con
 from os import system
 from colorama import Fore, Back, Style
-
+import globals as g
 
 
 
@@ -34,10 +34,11 @@ for i in range(len(claims)):
 
 
 for claim in claimList:
-
+    claim.setMedicare()
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
     #claim.setDaigCodes()
 
 
+print(g.mode)
