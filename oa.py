@@ -7,6 +7,8 @@ import globals as g
 
 
 
+
+
 extract = f.fileClass()
 
 
@@ -38,10 +40,10 @@ for claim in claimList:
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
-    claim.loadPrices()
-    claim.setDaigCodes()
-    print(claim.rowList)
-    x = input()
+    #claim.loadPrices()
+    #claim.setDaigCodes()
+
+claim.doSummaryFile()
 
 
 
