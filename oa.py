@@ -14,7 +14,7 @@ extract.openInput("051520_042420through051220_ins2.csv")
 extract.fixAddress("cleaned.csv")
 claims = extract.get()
 
-currentAccession = claims.iloc[0, con.ACCESSION_NUMBER]
+currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
 claim = c.claimClass()
 claimList = []
 
@@ -41,4 +41,3 @@ for claim in claimList:
     #claim.setDaigCodes()
 
 
-print(g.mode)
