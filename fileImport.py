@@ -37,18 +37,18 @@ class fileClass:
 
                 for row in csvreader:
 
-                    if self.__numIn(row[4]) == True:
-                        row[3] = row[3] + row[4]
-                        del row[4]
+                    if self.__numIn(row[con.NUM_FIX_1]) == True:
+                        row[con.NUM_FIX_1 - 1] = row[con.NUM_FIX_1 - 1] + row[con.NUM_FIX_1]
+                        del row[con.NUM_FIX_1]
 
-                    if self.__numIn(row[25]) == True:
-                        row[24] = row[24] + row[25]
-                        del row[25]
+                    if self.__numIn(row[con.NUM_FIX_2]) == True:
+                        row[con.NUM_FIX_2 - 1] = row[con.NUM_FIX_2 - 1] + row[con.NUM_FIX_2]
+                        del row[con.NUM_FIX_2]
 
 
-                    if self.__numIn(row[31]) == True:
-                        row[30] = row[30] + row[31]
-                        del row[31]
+                    if self.__numIn(row[con.NUM_FIX_3]) == True:
+                        row[con.NUM_FIX_3 - 1] = row[con.NUM_FIX_3 - 1] + row[con.NUM_FIX_3]
+                        del row[con.NUM_FIX_3]
 
                     if "SUITE" in row[con.SUITE_FIX_1]:
                         row[con.SUITE_FIX_1 - 1] = row[con.SUITE_FIX_1 - 1] + row[con.SUITE_FIX_1]
