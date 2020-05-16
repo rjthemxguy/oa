@@ -23,7 +23,12 @@ class claimClass:
         database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
 
         for row in self.rowList:
-            database.getPrice(row["CPT"])
+            price = database.getPrice(row["CPT"])
+
+            try:
+                row["PRICE"] = price[0]
+            except:
+                pass
 
     def setMedicare(self):
             g.mode = "M"
@@ -31,7 +36,7 @@ class claimClass:
     def setDaigCodes(self):
 
         EMGCount = 0
-
+        pointerList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]
         while True:
 
             for i in range(len(self.diagCodeList)):
@@ -62,6 +67,7 @@ class claimClass:
                     if x in self.diagEntryList:
                         self.assignedDiagCodes.append(self.diagCodeList[x - 1])
                         self.EMGList.append(row["EMG"])
+                        row["DIAG_POINTER"] = pointerList[x]
                         break
 
                     else:
