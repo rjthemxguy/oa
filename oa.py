@@ -4,6 +4,7 @@ import constants as con
 from os import system
 from colorama import Fore, Back, Style
 import globals as g
+import oaFileImport as o
 import SummaryModule as s
 
 extract = f.fileClass()
@@ -14,6 +15,7 @@ claims = extract.get()
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
 claim = c.claimClass()
+oaFile = o.oaFileClass()
 summary = s.summaryClass()
 claimList = []
 
@@ -48,6 +50,8 @@ for claim in claimList:
     claim.getDiagCodes()
     #claim.loadPrices()
     #claim.setDaigCodes()
+    oaFile.writeTestBlock(claim.rowList)
     summary.writeClaim(claim,claim.diagCodeList)
 
+oaFile.closeOAFile()
 summary.writePDF()

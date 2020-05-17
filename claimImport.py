@@ -6,6 +6,7 @@ from colorama import Fore, Back, Style
 import globals as g
 import mysql.connector
 import DBModule as db
+import pandas as pd
 
 
 init()
@@ -19,6 +20,10 @@ class claimClass:
         self.assignedDiagCodes = []
         self.EMGList = []
         self.diagEntryList = []
+
+        
+
+
 
     def doSummaryFile(self):
 
