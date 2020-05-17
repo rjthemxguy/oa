@@ -76,10 +76,15 @@ class summaryClass:
             self.pdf.cell(5, 4, diagCodes[i])
             xPos += 15
 
+        self.currentRow += 5
+        self.pdf.set_xy(15, self.currentRow)
+        self.pdf.cell(5, 4, "CPT Code")
 
+        self.pdf.set_xy(35, self.currentRow)
+        self.pdf.cell(5, 4, "EMG Code")
 
-
-
+        self.pdf.set_xy(55, self.currentRow)
+        self.pdf.cell(5, 4, "Price")
 
 
         self.currentRow += 5
@@ -90,6 +95,11 @@ class summaryClass:
         for row in claim.rowList:
             self.pdf.set_xy(15, self.currentRow)
             self.pdf.cell(5, 4, str(row["CPT"]))
+            self.pdf.set_xy(35, self.currentRow)
+            self.pdf.cell(5, 4, str(row["EMG"]))
+            self.pdf.set_xy(55, self.currentRow)
+            self.pdf.cell(5, 4, str(row["PRICE"]))
+
             self.currentRow += 5
 
             if self.currentRow > 170:
