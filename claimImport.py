@@ -165,6 +165,7 @@ class claimClass:
         }
 
         self.rowList.append(rowDict)
+
         self.accession_number = claimRow[con.ACCESSION_NUMBER]
 
     def getPrices(self):

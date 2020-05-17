@@ -8,6 +8,12 @@ class summaryClass:
         self.pdf = FPDF()
         self.currentRow = 0
 
+    def writeClaim(self, claim):
+
+
+        for row in claim.rowList:
+            pass
+
     def writeMast(self):
 
         self.pdf.add_page()
