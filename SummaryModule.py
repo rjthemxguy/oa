@@ -6,10 +6,12 @@ class summaryClass:
 
         from fpdf import FPDF
         self.pdf = FPDF()
+        self.pdf.set_auto_page_break(True)
         self.currentRow = 0
         self.claimCount = 1
 
-    def writeClaim(self, claim):
+    def writeClaim(self, claim, diagCodes):
+
 
         self.pdf.set_font('Arial', '', 8)
         self.pdf.set_xy(5, self.currentRow)
@@ -64,12 +66,34 @@ class summaryClass:
         self.pdf.line(5,self.currentRow, 280, self.currentRow)
         self.currentRow += 2
 
+        self.pdf.set_xy(15, self.currentRow)
+        self.pdf.cell(5, 4, "Diagnosis Codes:")
+
+
+        xPos = 40
+        for i in range(len(diagCodes)):
+            self.pdf.set_xy(xPos, self.currentRow)
+            self.pdf.cell(5, 4, diagCodes[i])
+            xPos += 15
+
+
+
+
+
+
+
+        self.currentRow += 5
+        self.pdf.line(5, self.currentRow, 280, self.currentRow)
+        self.currentRow += 3
+
+
         for row in claim.rowList:
-            self.pdf.set_xy(12, self.currentRow)
+            self.pdf.set_xy(15, self.currentRow)
             self.pdf.cell(5, 4, str(row["CPT"]))
             self.currentRow += 5
 
             if self.currentRow > 170:
+
                 self.pdf.add_page("L")
                 self.currentRow = 10
 

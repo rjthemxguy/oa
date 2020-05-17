@@ -9,13 +9,14 @@ import SummaryModule as s
 extract = f.fileClass()
 
 extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("smallBatch.csv")
+extract.fixAddress("cleaned.csv")
 claims = extract.get()
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
 claim = c.claimClass()
 summary = s.summaryClass()
 claimList = []
+
 
 for i in range(len(claims)):
 
@@ -40,13 +41,13 @@ for i in range(len(claims)):
 summary.writeMast()
 
 for claim in claimList:
-    print(claim.rowList)
+
     # claim.setMedicare()
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
     #claim.loadPrices()
     #claim.setDaigCodes()
-    summary.writeClaim(claim)
+    summary.writeClaim(claim,claim.diagCodeList)
 
 summary.writePDF()
