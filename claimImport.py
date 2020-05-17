@@ -7,6 +7,7 @@ import globals as g
 import mysql.connector
 import DBModule as db
 
+
 init()
 
 
@@ -27,11 +28,8 @@ class claimClass:
         pdf.add_page()
         pdf.set_font('Arial', '', 12)
         pdf.set_x(0)
-        pdf.set_y(0)
-        pdf.cell(10, 40, 'Claim Summary')
-        pdf.set_y(40)
-        pdf.set_x(60)
-        pdf.cell(10, 40, 'Test')
+        pdf.set_y(g.pageRow)
+        pdf.cell(5, 40, 'Claim Summary')
         pdf.output('tuto1.pdf', 'F')
 
 

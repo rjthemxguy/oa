@@ -4,6 +4,8 @@ import constants as con
 from os import system
 from colorama import Fore, Back, Style
 import globals as g
+import SummaryModule as s
+
 
 
 
@@ -18,6 +20,7 @@ claims = extract.get()
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
 claim = c.claimClass()
+summary = s.summaryClass()
 claimList = []
 
 for i in range(len(claims)):
@@ -34,6 +37,7 @@ for i in range(len(claims)):
         claim.addRow(claims.loc[i])
 
 
+summary.writeMast()
 
 for claim in claimList:
     #claim.setMedicare()
@@ -43,7 +47,7 @@ for claim in claimList:
     #claim.loadPrices()
     #claim.setDaigCodes()
 
-claim.doSummaryFile()
+summary.writePDF()
 
 
 
