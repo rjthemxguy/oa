@@ -10,10 +10,16 @@ class summaryClass:
         self.claimCount = 1
 
     def writeClaim(self, claim):
+
         self.pdf.set_font('Arial', '', 8)
         self.pdf.set_xy(0, self.currentRow)
         self.pdf.cell(5, 4, "[" + str(self.claimCount) + "]")
-
+        self.pdf.set_xy(8, self.currentRow)
+        self.pdf.cell(5, 4, str(claim.rowList[0]["ACCESSION_NUMBER"]))
+        self.pdf.set_xy(26, self.currentRow)
+        self.pdf.cell(5, 4, str(claim.rowList[0]["INSURANCE_PAYER_ID"]))
+        self.pdf.set_xy(56, self.currentRow)
+        self.pdf.cell(5, 4, str(claim.rowList[0]["PATIENT_LAST"]))
 
 
         for row in claim.rowList:
@@ -37,9 +43,9 @@ class summaryClass:
         self.pdf.set_xy(8, self.currentRow + 10)
         self.pdf.set_font('Arial', '', 8)
         self.pdf.cell(5, 4, "Accession #")
-        self.pdf.set_xy(30, self.currentRow + 10)
+        self.pdf.set_xy(26, self.currentRow + 10)
         self.pdf.cell(5, 4, "Sub ID")
-        self.pdf.set_xy(50, self.currentRow + 10)
+        self.pdf.set_xy(56, self.currentRow + 10)
         self.pdf.cell(5, 4, "Patient Last")
         self.pdf.set_xy(75, self.currentRow + 10)
         self.pdf.cell(5, 4, "Patient First")
