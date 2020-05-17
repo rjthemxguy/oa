@@ -6,7 +6,7 @@ class summaryClass:
 
         from fpdf import FPDF
         self.pdf = FPDF()
-        self.pdf.set_auto_page_break(True)
+        self.pdf.set_auto_page_break(False)
         self.currentRow = 0
         self.claimCount = 1
 
@@ -102,10 +102,11 @@ class summaryClass:
 
             self.currentRow += 5
 
-            if self.currentRow > 170:
+            if self.pdf.get_y() > 155:
 
                 self.pdf.add_page("L")
-                self.currentRow = 10
+                self.pdf.set_xy(5, 10)
+                self.currentRow = 5
 
 
 
