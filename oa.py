@@ -6,20 +6,11 @@ from colorama import Fore, Back, Style
 import globals as g
 import SummaryModule as s
 
-
-
-
-
-
 extract = f.fileClass()
 
-
 extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("verysmallBatch.csv")
+extract.fixAddress("smallBatch.csv")
 claims = extract.get()
-
-
-print(claims)
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
 claim = c.claimClass()
@@ -30,7 +21,7 @@ for i in range(len(claims)):
 
     if claims.iloc[i, con.ACCESSION_NUMBER] == currentAccession:
         claim.addRow(claims.loc[i])
-        print(claim.rowList)
+
 
 
 
@@ -41,32 +32,21 @@ for i in range(len(claims)):
         currentAccession = claims.iloc[i, con.ACCESSION_NUMBER]
         claim = c.claimClass()
         claim.addRow(claims.loc[i])
-        print(claim.rowList)
 
         # last record, put it in list
         if i == len(claims) - 1:
             claimList.append(claim)
 
-
-
-
-
-
-
+summary.writeMast()
 
 for claim in claimList:
-    pass
-
-    #claim.setMedicare()
-    #claim.checkForLab("LP2")
-    #claim.checkForLab("LP")
-    #claim.getDiagCodes()
+    print(claim.rowList)
+    # claim.setMedicare()
+    claim.checkForLab("LP2")
+    claim.checkForLab("LP")
+    claim.getDiagCodes()
     #claim.loadPrices()
     #claim.setDaigCodes()
-    #summary.writeClaim(claim)
+    summary.writeClaim(claim)
 
-
-
-
-
-
+summary.writePDF()
