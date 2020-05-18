@@ -56,7 +56,7 @@ for claim in claimList:
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
-    #claim.loadPrices()
+    claim.loadPrices()
     #claim.setDaigCodes()
     oaFile.writeTestBlock(claim.rowList, claim.diagCodeList)
     summary.writeClaim(claim,claim.diagCodeList)
