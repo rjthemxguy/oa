@@ -58,7 +58,7 @@ class oaFileClass:
         for i in range(len(_claim)):
             print("DiagCodePointer" + str(self.testIndex))
             self.testIndex += 1
-            self.oaTemplate.at[self.rowIndex, "DiagCodePointer" + str(self.testIndex)] = "TESTER"
+            self.oaTemplate.at[self.rowIndex, "DiagCodePointer" + str(self.testIndex)] = _claim[i]["DIAG_POINTER"]
 
         self.rowIndex += 1
 
