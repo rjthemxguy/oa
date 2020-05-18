@@ -76,15 +76,21 @@ system("clear")
 print()
 print(Fore.YELLOW + "Processing")
 
+numOfClaims = (len(claimList))
+claimsProcessed = 1
+
 for claim in claimList:
+
     # claim.setMedicare()
     claim.checkForLab("LP2")
     claim.checkForLab("LP")
     claim.getDiagCodes()
     claim.loadPrices()
-    claim.setDaigCodes()
+    claim.setDaigCodes(numOfClaims, claimsProcessed)
     oaFile.writeTestBlock(claim.rowList, claim.diagCodeList)
     summary.writeClaim(claim, claim.diagCodeList)
+
+    claimsProcessed += 1
 
 oaFile.closeOAFile()
 summary.writePDF()

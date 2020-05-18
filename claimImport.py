@@ -53,7 +53,7 @@ class claimClass:
     def setMedicare(self):
             g.mode = "M"
 
-    def setDaigCodes(self):
+    def setDaigCodes(self, numofClaims, claimsProcessed):
 
         EMGCount = 0
         pointerList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]
@@ -66,6 +66,8 @@ class claimClass:
 
             for row in self.rowList:
                 system("clear")
+                print("Claim " + str(claimsProcessed) + " of " + str(numofClaims))
+                print()
                 print(Fore.GREEN + "Please select the correct Diagnostic Code for each EMG Code\n")
                 print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
                 print(Fore.GREEN + "Patient: " + row["PATIENT_FIRST"] + " " + row["PATIENT_LAST"] + "\n")
