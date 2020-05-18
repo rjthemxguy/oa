@@ -13,11 +13,12 @@ system("clear")
 print()
 print(Fore.RED + "Please Select an Operation you wish to perform:")
 print("")
-print(Fore.MAGENTA + "[1] Run a new extract")
-print(Fore.MAGENTA + "[2] Review Claims for re-run")
-print(Fore.MAGENTA + "[3] Run Check file")
+print(Fore.MAGENTA + "[1] Run a new INSURANCE extract")
+print(Fore.MAGENTA + "[2] Run a new MEDICARE extract")
+print(Fore.MAGENTA + "[3] Review Claims for re-run")
+print(Fore.MAGENTA + "[4] Run Check file")
 
-allowableKeys = ["1", "3"]
+allowableKeys = ["1", "4"]
 checkFile = "cleaned.csv"
 
 while True:
@@ -38,7 +39,7 @@ while True:
                 except FileNotFoundError:
                     continue
 
-        if menuPress == "3":
+        if menuPress == "4":
             system("clear")
             print()
             print("Please paste the file you wish to process below")
