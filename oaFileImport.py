@@ -60,7 +60,16 @@ class oaFileClass:
         for i in range(len(_diagCodeList)):
             self.oaTemplate.at[self.rowIndex, "DiagCode" + str(i + 1)] = _diagCodeList[i]
 
+        self.setGender(_claim)
 
+    def setGender(self, _claim):
+        if _claim[0]["PATIENT_GENDER"] == "F":
+            self.oaTemplate.at[self.rowIndex, "PatientFemale"] = 1
+            self.oaTemplate.at[self.rowIndex, "PatientMale"] = ""
+
+        else:
+            self.oaTemplate.at[self.rowIndex, "PatientFemale"] = ""
+            self.oaTemplate.at[self.rowIndex, "PatientMale"] = 1
 
 
     def writeTestBlock(self, _claim, _diagCodeList):
