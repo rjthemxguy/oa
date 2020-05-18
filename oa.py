@@ -15,8 +15,10 @@ print(Fore.RED + "Please Select an Operation you wish to perform:")
 print("")
 print(Fore.MAGENTA + "[1] Run a new extract")
 print(Fore.MAGENTA + "[2] Review Claims for re-run")
+print(Fore.MAGENTA + "[3] Run Check file")
 
-allowableKeys = ["1"]
+allowableKeys = ["1", "3"]
+checkFile = "cleaned.csv"
 
 while True:
     menuPress = input()
@@ -35,11 +37,17 @@ while True:
                     break
                 except FileNotFoundError:
                     continue
-            print("Break")
+
+        if menuPress == "3":
+            system("clear")
+            print()
+            print("Please paste the file you wish to process below")
+            checkFile = input()
+
         break
 
 # extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("cleaned.csv")
+extract.fixAddress(checkFile)
 claims = extract.get()
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]

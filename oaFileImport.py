@@ -127,5 +127,13 @@ class oaFileClass:
     def closeOAFile(self):
         self.oaTemplate.to_csv("scratch/oaClaims.csv", header=False, index=False)
 
+        with open('scratch/oaClaims.csv', 'r') as tabFile:
+            tabFiledata = tabFile.read()
+
+            tabFiledata = tabFiledata.replace(',', '\t')
+
+        with open('output/tabClaims.txt', 'w') as tabFile:
+            tabFile.write(tabFiledata)
+
 
 
