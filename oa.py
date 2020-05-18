@@ -50,7 +50,7 @@ for claim in claimList:
     claim.getDiagCodes()
     #claim.loadPrices()
     #claim.setDaigCodes()
-    oaFile.writeTestBlock(claim.rowList)
+    oaFile.writeTestBlock(claim.rowList, claim.diagCodeList)
     summary.writeClaim(claim,claim.diagCodeList)
 
 oaFile.closeOAFile()
