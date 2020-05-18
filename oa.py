@@ -7,8 +7,6 @@ import globals as g
 import oaFileImport as o
 import SummaryModule as s
 
-
-
 extract = f.fileClass()
 
 system("clear")
@@ -109,6 +107,7 @@ numOfClaims = (len(claimList))
 claimsProcessed = 1
 
 for claim in claimList:
+
 
     # claim.setMedicare()
     claim.checkForLab("LP2")
