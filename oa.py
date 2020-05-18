@@ -10,7 +10,7 @@ import SummaryModule as s
 extract = f.fileClass()
 
 extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("addressFixed1.csv")
+extract.fixAddress("verysmallBatch.csv")
 claims = extract.get()
 
 
@@ -57,7 +57,7 @@ for claim in claimList:
     claim.checkForLab("LP")
     claim.getDiagCodes()
     claim.loadPrices()
-    #claim.setDaigCodes()
+    claim.setDaigCodes()
     oaFile.writeTestBlock(claim.rowList, claim.diagCodeList)
     summary.writeClaim(claim,claim.diagCodeList)
 

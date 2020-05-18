@@ -106,7 +106,16 @@ class claimClass:
 
                     print("\n" + Fore.GREEN + "Press [Y] to accept or [R] to re-code")
 
-            x = input()
+
+            allowedKeys = ["Y", "y", "R", "r"]
+
+            while True:
+                x = input()
+                if x in allowedKeys:
+                    break
+                else:
+                    print("Please select [Y] or [R]")
+                    continue
 
 
             if x == "y":
