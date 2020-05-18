@@ -16,11 +16,15 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "InsuranceCity"] = _claim[0]["INSURANCE_CITY"]
         self.oaTemplate.at[self.rowIndex, "InsuranceState"] = _claim[0]["INSURANCE_STATE"]
         self.oaTemplate.at[self.rowIndex, "InsuranceZip"] = _claim[0]["INSURANCE_ZIP"]
+        self.oaTemplate.at[self.rowIndex, "InsuranceCityStateZip"] = str(_claim[0]["INSURANCE_CITY"]) + " " + str(_claim[0]["INSURANCE_STATE"]) + " " + str(_claim[0]["INSURANCE_ZIP"])
         self.oaTemplate.at[self.rowIndex, "PlanGroupHealthPlan"] = "1"
         self.oaTemplate.at[self.rowIndex, "PatientID"] = _claim[0]["INSURANCE_PAYER_ID"]
         self.oaTemplate.at[self.rowIndex, "PatientLast"] = _claim[0]["PATIENT_LAST"]
+        self.oaTemplate.at[self.rowIndex, "InsuredLast"] = _claim[0]["PATIENT_LAST"]
         self.oaTemplate.at[self.rowIndex, "PatientFirst"] = _claim[0]["PATIENT_FIRST"]
+        self.oaTemplate.at[self.rowIndex, "InsuredFirst"] = _claim[0]["PATIENT_FIRST"]
         self.oaTemplate.at[self.rowIndex, "PatientMidInit"] = _claim[0]["PATIENT_MID_INIT"]
+        self.oaTemplate.at[self.rowIndex, "InsuredMidInit"] = _claim[0]["PATIENT_MID_INIT"]
         self.oaTemplate.at[self.rowIndex, "PatientDOB"] = _claim[0]["PATIENT_DOB"]
         self.oaTemplate.at[self.rowIndex, "PatientStreetAddress"] = _claim[0]["PATIENT_STREET_ADDR"]
         self.oaTemplate.at[self.rowIndex, "PatientCity"] = _claim[0]["PATIENT_CITY"]
@@ -29,7 +33,7 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "PatientPhone"] = _claim[0]["PATIENT_ZIP"]
         self.oaTemplate.at[self.rowIndex, "PatientRelationSELF"] = 1
         self.oaTemplate.at[self.rowIndex, "PatientSignature"] = "Signature on file"
-        self.oaTemplate.at[self.rowIndex, "PatientSignatureDate"] = _claim[0]["PATIENT_SIG_DATE"]
+        self.oaTemplate.at[self.rowIndex, "PatientSignatureDate"] = _claim[0]["TO_DATE_SERVICE"]
         self.oaTemplate.at[self.rowIndex, "InsuredSignature"] = "Signature on File "
         self.oaTemplate.at[self.rowIndex, "ReferringPhysician"] = _claim[0]["REFER_PHY_FIRST"] + " " + _claim[0]["REFER_PHY_LAST"]
         self.oaTemplate.at[self.rowIndex, "ReferPhysQualifier"] = _claim[0]["REFER_PHY_QUAL"]
@@ -55,7 +59,7 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "SupplierPhone"] = "(661) 253-1173"
         self.oaTemplate.at[self.rowIndex, "AcceptAssignYes"] = "1"
         self.oaTemplate.at[self.rowIndex, "TaxID"] = "81-3301345"
-        self.oaTemplate.at[self.rowIndex, "Session"] = _claim[0]["ACCESSION_NUMBER"]
+        #self.oaTemplate.at[self.rowIndex, "Session"] = _claim[0]["ACCESSION_NUMBER"]
 
         for i in range(len(_diagCodeList)):
             self.oaTemplate.at[self.rowIndex, "DiagCode" + str(i + 1)] = _diagCodeList[i]
@@ -107,6 +111,7 @@ class oaFileClass:
 
             if self.testIndex == 6 and self.totalRowsProcessed != len(_claim):
                 self.oaTemplate.at[self.rowIndex, "TotalCharges"] = self.rowTotal
+                self.oaTemplate.at[self.rowIndex, "BalanceDue"] = self.rowTotal
                 self.rowIndex += 1
                 self._writeHeader(_claim, _diagCodeList)
                 self.rowTotal = 0
@@ -119,6 +124,7 @@ class oaFileClass:
 
 
         self.oaTemplate.at[self.rowIndex, "TotalCharges"] = self.rowTotal
+        self.oaTemplate.at[self.rowIndex, "BalanceDue"] = self.rowTotal
         self.rowTotal = 0
         self.rowIndex += 1
 
