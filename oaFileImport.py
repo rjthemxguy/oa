@@ -3,8 +3,8 @@ import pandas as pd
 
 class oaFileClass:
     def __init__(self):
-        self.rowIndex = 1
-        self.testIndex = 0
+        self.rowIndex = 0
+        self.testIndex = 1
 
         self.oaTemplate = pd.read_csv("template/OATemplate.csv", header=0)
 
@@ -49,13 +49,18 @@ class oaFileClass:
             self.oaTemplate.at[self.rowIndex, "DiagCode" + str(i + 1)] = _diagCodeList[i]
 
 
-        print((_diagCodeList))
+
 
     def writeTestBlock(self, _claim, _diagCodeList):
         self._writeHeader(_claim, _diagCodeList)
 
+        self.testIndex = 1
         for i in range(len(_claim)):
-            print(_claim[i])
+            print("DiagCodePointer" + str(self.testIndex))
+            self.testIndex += 1
+            self.oaTemplate.at[self.rowIndex, "DiagCodePointer" + str(self.testIndex)] = "TESTER"
+
+        self.rowIndex += 1
 
 
 

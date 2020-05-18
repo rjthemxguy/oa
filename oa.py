@@ -10,7 +10,7 @@ import SummaryModule as s
 extract = f.fileClass()
 
 extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("cleaned.csv")
+extract.fixAddress("verysmallBatch.csv")
 claims = extract.get()
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]

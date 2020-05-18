@@ -121,7 +121,7 @@ class summaryClass:
 
         self.pdf.add_page("L")
         self.pdf.set_font('Arial', 'B', 10)
-        self.pdf.set_xy(0,0)
+        self.pdf.set_xy(5,0)
         self.pdf.cell(5, 10, 'Claim Summary - ')
         self.pdf.set_xy(12, self.currentRow + 10)
         self.pdf.set_font('Arial', '', 8)
