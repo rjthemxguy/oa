@@ -56,8 +56,18 @@ class oaFileClass:
 
         self.testIndex = 1
         for i in range(len(_claim)):
-            print("DiagCodePointer" + str(self.testIndex))
+
             self.testIndex += 1
+            self.oaTemplate.at[self.rowIndex, "CPT" + str(self.testIndex)] = _claim[i]["CPT"]
+            self.oaTemplate.at[self.rowIndex, "EMG" + str(self.testIndex)] = _claim[i]["EMG"]
+            self.oaTemplate.at[self.rowIndex, "Charges" + str(self.testIndex)] = _claim[i]["PRICE"]
+            self.oaTemplate.at[self.rowIndex, "Units" + str(self.testIndex)] = "1"
+            self.oaTemplate.at[self.rowIndex, "ToDateOfService" + str(self.testIndex)] = _claim[i]["TO_DATE_SERVICE"]
+            self.oaTemplate.at[self.rowIndex, "FromDateOfService" + str(self.testIndex)] = _claim[i]["FROM_DATE_SERVICE"]
+            self.oaTemplate.at[self.rowIndex, "PlaceOfService" + str(self.testIndex)] = "11"
+            self.oaTemplate.at[self.rowIndex, "RenderingPhysQualifier" + str(self.testIndex)] = "MD"
+            self.oaTemplate.at[self.rowIndex, "RenderingPhysID" + str(self.testIndex)] = _claim[i]["REFER_PHY_ID"]
+            self.oaTemplate.at[self.rowIndex, "RenderingPhysNPI" + str(self.testIndex)] = _claim[i]["REFER_PHY_NPI"]
             self.oaTemplate.at[self.rowIndex, "DiagCodePointer" + str(self.testIndex)] = _claim[i]["DIAG_POINTER"]
 
         self.rowIndex += 1
