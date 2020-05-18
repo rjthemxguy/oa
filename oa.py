@@ -10,7 +10,7 @@ import SummaryModule as s
 extract = f.fileClass()
 
 extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("smallBatch.csv")
+extract.fixAddress("addressFixed1.csv")
 claims = extract.get()
 
 

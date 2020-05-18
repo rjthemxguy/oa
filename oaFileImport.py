@@ -66,11 +66,11 @@ class oaFileClass:
     def writeTestBlock(self, _claim, _diagCodeList):
         self._writeHeader(_claim, _diagCodeList)
 
-
+        self.rowTotal = 0
         self.testIndex = 0
+        self.totalRowsProcessed = 0
         for i in range(len(_claim)):
 
-            print(_claim[i]["PRICE"])
 
             self.testIndex += 1
             self.oaTemplate.at[self.rowIndex, "CPT" + str(self.testIndex)] = _claim[i]["CPT"]
@@ -85,14 +85,29 @@ class oaFileClass:
             self.oaTemplate.at[self.rowIndex, "RenderingPhysNPI" + str(self.testIndex)] = _claim[i]["REFER_PHY_NPI"]
             self.oaTemplate.at[self.rowIndex, "DiagCodePointer" + str(self.testIndex)] = _claim[i]["DIAG_POINTER"]
 
-            self.rowTotal = self.rowTotal + _claim[i]["PRICE"]
+            try:
+                self.rowTotal = self.rowTotal + _claim[i]["PRICE"]
 
-            if self.testIndex == 6:
+            except:
+                print("Price Error:")
+                print("---- EMG: " + _claim[i]["EMG"])
+                print("---- CPT: " + _claim[i]["CPT"])
+                print(_claim[i]["PRICE"])
+
+            self.totalRowsProcessed += 1
+
+            if self.testIndex == 6 and self.totalRowsProcessed != len(_claim):
                 self.oaTemplate.at[self.rowIndex, "TotalCharges"] = self.rowTotal
-                self.rowTotal = 0
                 self.rowIndex += 1
-                self.testIndex = 1
                 self._writeHeader(_claim, _diagCodeList)
+                self.rowTotal = 0
+                self.testIndex = 0
+
+            if self.totalRowsProcessed == len(_claim):
+                break
+
+
+
 
         self.oaTemplate.at[self.rowIndex, "TotalCharges"] = self.rowTotal
         self.rowTotal = 0
