@@ -45,6 +45,10 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "FacilityCityStateZip"] = "Valencia CA 91355"
         self.oaTemplate.at[self.rowIndex, "FacilityNPI"] = "1871038778"
 
+        for i in range(len(_diagCodeList)):
+            self.oaTemplate.at[self.rowIndex, "DiagCode" + str(i + 1)] = _diagCodeList[i]
+
+
         print((_diagCodeList))
 
     def writeTestBlock(self, _claim, _diagCodeList):
