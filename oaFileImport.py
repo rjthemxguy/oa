@@ -16,7 +16,7 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "InsuranceCity"] = _claim[0]["INSURANCE_CITY"]
         self.oaTemplate.at[self.rowIndex, "InsuranceState"] = _claim[0]["INSURANCE_STATE"]
         self.oaTemplate.at[self.rowIndex, "InsuranceZip"] = _claim[0]["INSURANCE_ZIP"]
-        self.oaTemplate.at[self.rowIndex, "PlanGroupHealthPlan"] = _claim[0]["PLAN_GROUP_HEALTH_PLAN"]
+        self.oaTemplate.at[self.rowIndex, "PlanGroupHealthPlan"] = "1"
         self.oaTemplate.at[self.rowIndex, "PatientID"] = _claim[0]["PATIENT_ID"]
         self.oaTemplate.at[self.rowIndex, "PatientLast"] = _claim[0]["PATIENT_LAST"]
         self.oaTemplate.at[self.rowIndex, "PatientFirst"] = _claim[0]["PATIENT_FIRST"]
@@ -45,6 +45,17 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "FacilityZip"] = "91355"
         self.oaTemplate.at[self.rowIndex, "FacilityCityStateZip"] = "Valencia CA 91355"
         self.oaTemplate.at[self.rowIndex, "FacilityNPI"] = "1871038778"
+        self.oaTemplate.at[self.rowIndex, "SupplierName"] = "Prime Clinical Lab"
+        self.oaTemplate.at[self.rowIndex, "SupplierStreetAddr"] = "27825 Fremont Ct"
+        self.oaTemplate.at[self.rowIndex, "SupplierCity"] = "Velencia"
+        self.oaTemplate.at[self.rowIndex, "SupplierState"] = "CA"
+        self.oaTemplate.at[self.rowIndex, "SupplierZip"] = "91355"
+        self.oaTemplate.at[self.rowIndex, "SupplierCityStateZip"] = "Valencia CA 91355"
+        self.oaTemplate.at[self.rowIndex, "SupplierNPI"] = "1871038778"
+        self.oaTemplate.at[self.rowIndex, "SupplierPhone"] = "(661) 253-1173"
+        self.oaTemplate.at[self.rowIndex, "AcceptAssignYes"] = "1"
+        self.oaTemplate.at[self.rowIndex, "TaxID"] = "81-3301345"
+        self.oaTemplate.at[self.rowIndex, "Session"] = _claim[0]["ACCESSION_NUMBER"]
 
         for i in range(len(_diagCodeList)):
             self.oaTemplate.at[self.rowIndex, "DiagCode" + str(i + 1)] = _diagCodeList[i]
