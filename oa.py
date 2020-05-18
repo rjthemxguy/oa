@@ -10,7 +10,7 @@ import SummaryModule as s
 extract = f.fileClass()
 
 extract.openInput("051520_042420through051220_ins2.csv")
-extract.fixAddress("singleBatch.csv")
+extract.fixAddress("smallBatch.csv")
 claims = extract.get()
 
 
@@ -22,7 +22,7 @@ claimList = []
 
 singleRecord = True
 
-print(len(claims))
+
 
 for i in range(len(claims)):
 
@@ -46,12 +46,12 @@ for i in range(len(claims)):
 if singleRecord == True:
     claimList.append(claim)
 
-    print(claimList)
+
 
 summary.writeMast()
 
 for claim in claimList:
-    print(claim.rowList)
+
     # claim.setMedicare()
     claim.checkForLab("LP2")
     claim.checkForLab("LP")

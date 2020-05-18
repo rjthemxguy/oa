@@ -4,7 +4,7 @@ import pandas as pd
 class oaFileClass:
     def __init__(self):
         self.rowIndex = 0
-        self.testIndex = 1
+        self.testIndex = 0
 
         self.oaTemplate = pd.read_csv("template/OATemplate.csv", header=0)
 
@@ -54,8 +54,10 @@ class oaFileClass:
     def writeTestBlock(self, _claim, _diagCodeList):
         self._writeHeader(_claim, _diagCodeList)
 
-        self.testIndex = 1
+        self.testIndex = 0
         for i in range(len(_claim)):
+
+            print(len(_claim))
 
             self.testIndex += 1
             self.oaTemplate.at[self.rowIndex, "CPT" + str(self.testIndex)] = _claim[i]["CPT"]
