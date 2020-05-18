@@ -7,6 +7,8 @@ import globals as g
 import oaFileImport as o
 import SummaryModule as s
 
+
+
 extract = f.fileClass()
 
 system("clear")
@@ -46,6 +48,24 @@ while True:
             checkFile = input()
 
         break
+
+system("clear")
+print("Do you want to process Diagnosis Codes?")
+print("[Y] [N]")
+
+allowableKeys = ["y", "n"]
+
+while True:
+    key = input()
+    if key in allowableKeys:
+        if key == "y":
+            break
+
+        if key == "n":
+            g.processDiagCodes = False
+            break
+    else:
+        continue
 
 # extract.openInput("051520_042420through051220_ins2.csv")
 extract.fixAddress(checkFile)
@@ -95,7 +115,10 @@ for claim in claimList:
     claim.checkForLab("LP")
     claim.getDiagCodes()
     claim.loadPrices()
-    claim.setDaigCodes(numOfClaims, claimsProcessed)
+
+    if g.processDiagCodes == True:
+        claim.setDaigCodes(numOfClaims, claimsProcessed)
+
     oaFile.writeTestBlock(claim.rowList, claim.diagCodeList)
     summary.writeClaim(claim, claim.diagCodeList)
 
