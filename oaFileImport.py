@@ -70,6 +70,11 @@ class oaFileClass:
             self.oaTemplate.at[self.rowIndex, "RenderingPhysNPI" + str(self.testIndex)] = _claim[i]["REFER_PHY_NPI"]
             self.oaTemplate.at[self.rowIndex, "DiagCodePointer" + str(self.testIndex)] = _claim[i]["DIAG_POINTER"]
 
+            if self.testIndex == 6:
+                self.rowIndex += 1
+                self.testIndex = 1
+                self._writeHeader(_claim, _diagCodeList)
+
         self.rowIndex += 1
 
 
