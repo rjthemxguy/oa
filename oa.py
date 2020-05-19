@@ -7,13 +7,23 @@ import globals as g
 import oaFileImport as o
 import SummaryModule as s
 import inputModule as i
+import os
+import subprocess
 
+checkFile = "cleaned.csv"
 inputFile = i.inputClass()
 extract = f.fileClass()
 
-fileToProcess = inputFile.getInput()
+fileType = inputFile.getFileType()
 
-extract.openInput(fileToProcess)
+if fileType == "Extract":
+    fileToProcess = inputFile.getInput()
+    extract.openInput(fileToProcess)
+
+if fileType == "Check":
+    checkFile = inputFile.getCheck()
+
+
 
 system("clear")
 print()
@@ -25,7 +35,7 @@ print(Fore.MAGENTA + "[3] Review Claims for re-run")
 print(Fore.MAGENTA + "[4] Run Check file")
 
 allowableKeys = ["1", "4"]
-checkFile = "cleaned.csv"
+
 
 while True:
     menuPress = input()
@@ -122,3 +132,7 @@ for claim in claimList:
 
 oaFile.closeOAFile()
 summary.writePDF()
+
+
+
+
