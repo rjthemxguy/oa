@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 import constants as con
+import os
 
 
 class fileClass:
@@ -8,6 +9,7 @@ class fileClass:
 
         self.filePath = "input/"
         self.inputFileName = ""
+
 
     def __numIn(self, s):
         return any(i.isdigit() for i in s)

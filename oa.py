@@ -6,8 +6,14 @@ from colorama import Fore, Back, Style
 import globals as g
 import oaFileImport as o
 import SummaryModule as s
+import inputModule as i
 
+inputFile = i.inputClass()
 extract = f.fileClass()
+
+fileToProcess = inputFile.getInput()
+
+extract.openInput(fileToProcess)
 
 system("clear")
 print()
@@ -26,18 +32,7 @@ while True:
     if menuPress in allowableKeys:
 
         if menuPress == "1":
-            while True:
-                system("clear")
-                print()
-                print("Please ensure the file you wish to process is in the INPUT directory")
-                print("Please paste the file you wish to process below")
-                fileToProcess = input()
-
-                try:
-                    extract.openInput(fileToProcess)
-                    break
-                except FileNotFoundError:
-                    continue
+            break
 
         if menuPress == "4":
             system("clear")
