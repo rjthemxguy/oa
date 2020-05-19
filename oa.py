@@ -69,6 +69,8 @@ while True:
 extract.fixAddress(checkFile)
 claims = extract.get()
 
+
+
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
 claim = c.claimClass()
 oaFile = o.oaFileClass()
@@ -91,8 +93,8 @@ for i in range(len(claims)):
         singleRecord = False
 
         # last record, put it in list
-        if i == len(claims) - 1:
-            claimList.append(claim)
+    if i == (len(claims) - 1):
+        claimList.append(claim)
 
 if singleRecord == True:
     claimList.append(claim)
