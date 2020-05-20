@@ -1,6 +1,13 @@
 import csv
+import globals as g
 import pandas as pd
-import constants as con
+
+if g.mode == "I":
+    import constants as con
+
+else:
+    import constantsMed as con
+
 import os
 
 
@@ -56,9 +63,15 @@ class fileClass:
                         row[con.SUITE_FIX_1 - 1] = row[con.SUITE_FIX_1 - 1] + row[con.SUITE_FIX_1]
                         del row[con.SUITE_FIX_1]
 
-                   # if "SUITE" in row[con.SUITE_FIX_2]:
-                   #     row[con.SUITE_FIX_2 - 1] = row[con.SUITE_FIX_2 - 1] + row[con.SUITE_FIX_2]
-                   #    del row[con.SUITE_FIX_2]
+                    if "SUITE" in row[con.SUITE_FIX_2]:
+                        row[con.SUITE_FIX_2 - 1] = row[con.SUITE_FIX_2 - 1] + row[con.SUITE_FIX_2]
+                        del row[con.SUITE_FIX_2]
+
+                    if "MD" in row[con.MD_FIX]:
+                        del row[con.MD_FIX]
+
+                    if "MD" in row[con.MD_FIX2]:
+                        del row[con.MD_FIX2]
 
 
 

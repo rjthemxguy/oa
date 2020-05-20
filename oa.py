@@ -1,6 +1,6 @@
 import fileImport as f
 import claimImport as c
-import constants as con
+import constantsMed as con
 from os import system
 from colorama import Fore, Back, Style
 import globals as g
@@ -32,9 +32,9 @@ print("")
 print(Fore.MAGENTA + "[1] Run a new INSURANCE extract")
 print(Fore.MAGENTA + "[2] Run a new MEDICARE extract")
 print(Fore.MAGENTA + "[3] Review Claims for re-run")
-print(Fore.MAGENTA + "[4] Run Check file")
 
-allowableKeys = ["1", "4"]
+
+allowableKeys = ["1", "2"]
 
 
 while True:
@@ -44,11 +44,10 @@ while True:
         if menuPress == "1":
             break
 
-        if menuPress == "4":
-            system("clear")
-            print()
-            print("Please paste the file you wish to process below")
-            checkFile = input()
+        if menuPress == "2":
+            g.mode = "M"
+            import constantsMed as con
+            break
 
         break
 

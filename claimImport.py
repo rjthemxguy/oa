@@ -1,4 +1,4 @@
-import constants as con
+import constantsMed as con
 import math
 from os import system
 from colorama import init

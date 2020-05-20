@@ -35,7 +35,10 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "PatientSignature"] = "Signature on file"
         self.oaTemplate.at[self.rowIndex, "PatientSignatureDate"] = _claim[0]["TO_DATE_SERVICE"]
         self.oaTemplate.at[self.rowIndex, "InsuredSignature"] = "Signature on File "
-        self.oaTemplate.at[self.rowIndex, "ReferringPhysician"] = _claim[0]["REFER_PHY_FIRST"] + " " + _claim[0]["REFER_PHY_LAST"]
+        try:
+            self.oaTemplate.at[self.rowIndex, "ReferringPhysician"] = _claim[0]["REFER_PHY_FIRST"] + " " + _claim[0]["REFER_PHY_LAST"]
+        except:
+            print("Error in Phy Names")
         self.oaTemplate.at[self.rowIndex, "ReferPhysQualifier"] = _claim[0]["REFER_PHY_QUAL"]
         self.oaTemplate.at[self.rowIndex, "Refer_Phys_NPI"] = _claim[0]["REFER_PHY_NPI"]
         self.oaTemplate.at[self.rowIndex, "PhysicianSignature"] = "Signature on File"
