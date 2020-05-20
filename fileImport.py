@@ -17,14 +17,13 @@ class fileClass:
         self.filePath = "input/"
         self.inputFileName = ""
 
-
     def __numIn(self, s):
         return any(i.isdigit() for i in s)
 
     def setPath(self, path):
         self.filePath = path
 
-    def openInput(self,inputFileName):
+    def openInput(self, inputFileName):
         with open(self.filePath + inputFileName, 'r') as file:
             fileData = file.read()
 
@@ -34,6 +33,36 @@ class fileClass:
                 file.write(fileData)
 
                 file.close()
+
+    def parseForMed(self, issue, fileName):
+        with open('scratch/' + fileName, 'r') as csvfile:
+            # creating a csv reader object
+            csvreader = csv.reader(csvfile)
+
+            with open('scratch/parsed1.csv', "w", newline='') as result:
+                writer = csv.writer(result)
+
+                for row in csvreader:
+                    if "PALMETTO" not in row[1]:
+                        writer.writerow(row)
+
+                result.close()
+
+    def parseForBlankIns(self, issue, fileName):
+        with open('scratch/parsed1.csv', 'r') as csvfile:
+            # creating a csv reader object
+            csvreader = csv.reader(csvfile)
+
+            with open('scratch/parsed2.csv', "w", newline='') as result:
+                writer = csv.writer(result)
+
+                for row in csvreader:
+                    if len(row[1]) == 0:
+                        row[1] = "Insurance Info Missing"
+                    writer.writerow(row)
+
+                result.close()
+
 
     def fixAddress(self, fileName):
 
@@ -54,7 +83,6 @@ class fileClass:
                         row[con.NUM_FIX_2 - 1] = row[con.NUM_FIX_2 - 1] + row[con.NUM_FIX_2]
                         del row[con.NUM_FIX_2]
 
-
                     if self.__numIn(row[con.NUM_FIX_3]) == True:
                         row[con.NUM_FIX_3 - 1] = row[con.NUM_FIX_3 - 1] + row[con.NUM_FIX_3]
                         del row[con.NUM_FIX_3]
@@ -73,11 +101,7 @@ class fileClass:
                     if "MD" in row[con.MD_FIX2]:
                         del row[con.MD_FIX2]
 
-
-
-
                     writer.writerow(row)
-
 
                 result.close()
 
@@ -85,4 +109,4 @@ class fileClass:
 
         self.dataset = pd.read_csv("scratch/addressFixed.csv", header=None)
 
-        return(self.dataset)
+        return (self.dataset)
