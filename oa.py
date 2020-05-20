@@ -84,6 +84,9 @@ claimList = []
 
 singleRecord = True
 
+
+
+
 for i in range(len(claims)):
 
     if claims.iloc[i, con.ACCESSION_NUMBER] == currentAccession:
@@ -105,6 +108,7 @@ if singleRecord == True:
     claimList.append(claim)
 
 summary.writeMast()
+
 
 system("clear")
 print()

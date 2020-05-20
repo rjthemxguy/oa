@@ -56,6 +56,12 @@ class fileClass:
                         row[con.SUITE_FIX_1 - 1] = row[con.SUITE_FIX_1 - 1] + row[con.SUITE_FIX_1]
                         del row[con.SUITE_FIX_1]
 
+                   # if "SUITE" in row[con.SUITE_FIX_2]:
+                   #     row[con.SUITE_FIX_2 - 1] = row[con.SUITE_FIX_2 - 1] + row[con.SUITE_FIX_2]
+                   #    del row[con.SUITE_FIX_2]
+
+
+
 
                     writer.writerow(row)
 

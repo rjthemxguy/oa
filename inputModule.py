@@ -20,7 +20,7 @@ class inputClass:
                 inputCount += 1
                 allowableKeys.append(str(inputCount))
                 self.inputList.append(inputDirList[i])
-                print(Fore.WHITE + "[" + str(i+1) + "] " + "- " + inputDirList[i])
+                print(Fore.WHITE + "[" + str(inputCount) + "] " + "- " + inputDirList[i])
 
         while True:
             x = int(input())
@@ -41,7 +41,7 @@ class inputClass:
                 inputCount += 1
                 allowableKeys.append(str(inputCount))
                 self.inputList.append(inputDirList[i])
-                print(Fore.WHITE + "[" + str(i + 1) + "] " + "- " + inputDirList[i])
+                print(Fore.WHITE + "[" + str(inputCount) + "] " + "- " + inputDirList[i])
 
         while True:
             x = int(input())
