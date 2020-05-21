@@ -84,6 +84,8 @@ extract.parseForRan(checkFile)
 #extract.fixAddress(checkFile)
 claims = extract.get()
 
+print(claims)
+
 
 
 currentAccession = claims.iloc[con.FIRST_ROW, con.ACCESSION_NUMBER]
@@ -114,18 +116,20 @@ for i in range(len(claims)):
     if i == (len(claims) - 1):
         claimList.append(claim)
 
-if singleRecord == True:
-    claimList.append(claim)
+#if singleRecord == True:
+ #   claimList.append(claim)
 
 summary.writeMast()
 
 
 system("clear")
 print()
-print(Fore.YELLOW + "Processing")
+print(Fore.YELLOW + "Processing New and Deleted from Database Claims")
 
 numOfClaims = (len(claimList))
 claimsProcessed = 1
+
+
 
 for claim in claimList:
 

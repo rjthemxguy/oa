@@ -55,6 +55,9 @@ class claimClass:
 
     def setDaigCodes(self, numofClaims, claimsProcessed):
 
+
+
+
         EMGCount = 0
         pointerList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]
         while True:
