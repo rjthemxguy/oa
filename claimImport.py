@@ -1,4 +1,4 @@
-import constantsMed as con
+import constants as con
 import math
 from os import system
 from colorama import init
@@ -158,7 +158,6 @@ class claimClass:
 
         rowDict = {
             "INSURANCE_PLAN_NAME": claimRow[con.INSURANCE_PLAN_NAME],
-            "INSURANCE_PAYER_ID": claimRow[con.INSURANCE_PAYER_ID],
             "INSURANCE_STREET_ADDR": claimRow[con.INSURANCE_STREET_ADDR],
             "INSURANCE_CITY": claimRow[con.INSURANCE_CITY],
             "INSURANCE_STATE": claimRow[con.INSURANCE_STATE],
@@ -201,6 +200,7 @@ class claimClass:
             "ACCESSION_NUMBER": claimRow[con.ACCESSION_NUMBER],
             "DIAG_POINTER": ""
         }
+
 
         self.rowList.append(rowDict)
 

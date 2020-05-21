@@ -20,7 +20,7 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "InsuranceZip"] = _claim[0]["INSURANCE_ZIP"]
         self.oaTemplate.at[self.rowIndex, "InsuranceCityStateZip"] = str(_claim[0]["INSURANCE_CITY"]) + " " + str(_claim[0]["INSURANCE_STATE"]) + " " + str(_claim[0]["INSURANCE_ZIP"])
         self.oaTemplate.at[self.rowIndex, "PlanGroupHealthPlan"] = "1"
-        self.oaTemplate.at[self.rowIndex, "PatientID"] = _claim[0]["INSURANCE_PAYER_ID"]
+        self.oaTemplate.at[self.rowIndex, "PatientID"] = _claim[0]["PATIENT_ID"]
         self.oaTemplate.at[self.rowIndex, "PatientLast"] = _claim[0]["PATIENT_LAST"]
         self.oaTemplate.at[self.rowIndex, "InsuredLast"] = _claim[0]["PATIENT_LAST"]
         self.oaTemplate.at[self.rowIndex, "PatientFirst"] = _claim[0]["PATIENT_FIRST"]
