@@ -98,7 +98,7 @@ class fileClass:
                 result.close()
 
     def parseForRan(self, _accession):
-        database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
+        database = db.database_class()
 
         with open('scratch/parsed4.csv', 'r') as csvfile:
             # creating a csv reader object

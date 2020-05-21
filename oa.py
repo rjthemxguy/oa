@@ -7,8 +7,11 @@ import globals as g
 import oaFileImport as o
 import SummaryModule as s
 import inputModule as i
+import DBModule as db
 import os
 import subprocess
+
+database = db.database_class()
 
 checkFile = "cleaned.csv"
 inputFile = i.inputClass()
@@ -31,7 +34,7 @@ print(Fore.RED + "Please Select an Operation you wish to perform:")
 print("")
 print(Fore.MAGENTA + "[1] Run a new INSURANCE extract")
 print(Fore.MAGENTA + "[2] Run a new MEDICARE extract")
-print(Fore.MAGENTA + "[3] Review Claims for re-run")
+print(Fore.MAGENTA + "[3] Delete Accession Numbers")
 
 
 allowableKeys = ["1", "2"]
@@ -49,7 +52,9 @@ while True:
             import constantsMed as con
             break
 
-        break
+        if menuPress == 3:
+            database.deleteAccession()
+            break
 
 system("clear")
 print("Do you want to process Diagnosis Codes?")

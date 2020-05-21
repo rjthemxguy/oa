@@ -2,15 +2,30 @@ import mysql.connector
 
 
 class database_class:
-    def __init__(self, hostname, username, password, databaseName):
+    def __init__(self):
         self.mydb = mysql.connector.connect(
-            host=hostname,
-            user=username,
-            passwd=password,
-            database=databaseName
+            host="rjrobinson.net",
+            user="rjrob_admin",
+            passwd="hapkido",
+            database="rjrob_vernonDB"
         )
 
         self.mycursor = self.mydb.cursor(buffered=True)
+
+    def deleteAccession(self):
+
+
+        while True:
+            print()
+            print("Enter the Accession number to delete from the database")
+
+            x = input()
+
+            if x == "y":
+                break
+            if x == "n":
+                continue
+
 
     def insertAccession(self, _accession):
         sql = "INSERT INTO accessionRan (accession) VALUES (" + str(_accession) + ")"

@@ -39,7 +39,7 @@ class claimClass:
 
 
     def loadPrices(self):
-        database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
+        database = db.database_class()
 
         for row in self.rowList:
             price = database.getPrice(str(row["CPT"]))
