@@ -4,8 +4,6 @@ from colorama import Fore, Back, Style
 import time
 
 
-
-
 class database_class:
     def __init__(self):
         self.mydb = mysql.connector.connect(
@@ -17,9 +15,11 @@ class database_class:
 
         self.mycursor = self.mydb.cursor(buffered=True)
 
+        #self.mycursor.execute('SET GLOBAL connect_timeout=28800')
+        #self.mycursor.execute('SET GLOBAL wait_timeout=28800')
+        #self.mycursor.execute('SET GLOBAL interactive_timeout=28800')
+
     def deleteAccession(self):
-
-
 
         while True:
             system("clear")
@@ -50,7 +50,6 @@ class database_class:
             if y == "n":
                 continue
 
-
     def insertAccession(self, _accession):
         sql = "INSERT INTO accessionRan (accession) VALUES (" + str(_accession) + ")"
         val = (_accession)
@@ -68,7 +67,6 @@ class database_class:
 
     def didRun(self, accession):
 
-
         sql = "SELECT accession FROM accessionRan WHERE accession=" + "'" + accession + "'"
 
         self.mycursor.execute(sql)
@@ -78,7 +76,6 @@ class database_class:
             return True
         except:
             return False
-
 
     def getPrice(self, CPT):
         sql = "SELECT price FROM comp WHERE hcpcs=" + "'" + CPT + "'"
