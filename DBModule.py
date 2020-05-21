@@ -1,5 +1,8 @@
 import mysql.connector
 from os import system
+from colorama import Fore, Back, Style
+import time
+
 
 
 
@@ -21,17 +24,20 @@ class database_class:
         while True:
             system("clear")
             print()
-            print("Enter the Accession number to delete from the database")
+            print(Fore.YELLOW + "Enter the Accession number to delete from the database")
 
-            x = str(input())
+            accessionNumber = str(input())
             system("clear")
-            print("Is this the accession number you wish to delete: " + x)
-            y = input()
+            print(Fore.YELLOW + "Is this the accession number you wish to delete: " + Fore.WHITE + accessionNumber)
+            y = str(input())
             if y == "y":
-                print("Delete code goes here")
+                sql = "DELETE FROM accessionRan WHERE accession=" + "'" + accessionNumber + "'"
+                self.mycursor.execute(sql)
+                print(Fore.RED + "Accession number deleted!")
+                time.sleep(3)
                 while True:
                     system("clear")
-                    print("Do you want to delete another accession code?")
+                    print(Fore.YELLOW + "Do you want to delete another accession code?")
                     x = input()
                     if x == "y":
                         break

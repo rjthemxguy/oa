@@ -12,7 +12,7 @@ class summaryClass:
         self.pdf.set_auto_page_break(False)
         self.currentRow = 0
         self.claimCount = 1
-        self.database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
+        self.database = db.database_class()
 
 
     def writeClaim(self, claim, diagCodes):
