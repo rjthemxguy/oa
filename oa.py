@@ -37,7 +37,7 @@ print(Fore.MAGENTA + "[2] Run a new MEDICARE extract")
 print(Fore.MAGENTA + "[3] Delete Accession Numbers")
 
 
-allowableKeys = ["1", "2"]
+allowableKeys = ["1", "2", "3"]
 
 
 while True:
@@ -52,7 +52,7 @@ while True:
             import constantsMed as con
             break
 
-        if menuPress == 3:
+        if menuPress == "3":
             database.deleteAccession()
             break
 

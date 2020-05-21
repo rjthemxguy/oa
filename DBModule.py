@@ -1,4 +1,6 @@
 import mysql.connector
+from os import system
+
 
 
 class database_class:
@@ -15,15 +17,31 @@ class database_class:
     def deleteAccession(self):
 
 
+
         while True:
+            system("clear")
             print()
             print("Enter the Accession number to delete from the database")
 
-            x = input()
-
-            if x == "y":
-                break
-            if x == "n":
+            x = str(input())
+            system("clear")
+            print("Is this the accession number you wish to delete: " + x)
+            y = input()
+            if y == "y":
+                print("Delete code goes here")
+                while True:
+                    system("clear")
+                    print("Do you want to delete another accession code?")
+                    x = input()
+                    if x == "y":
+                        break
+                    if x == "n":
+                        break
+                if x == "y":
+                    continue
+                if x == "n":
+                    break
+            if y == "n":
                 continue
 
 
