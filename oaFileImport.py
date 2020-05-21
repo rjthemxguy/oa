@@ -1,6 +1,8 @@
 import pandas as pd
 
 
+
+
 class oaFileClass:
     def __init__(self):
         self.rowIndex = 0
@@ -63,6 +65,8 @@ class oaFileClass:
         self.oaTemplate.at[self.rowIndex, "AcceptAssignYes"] = "1"
         self.oaTemplate.at[self.rowIndex, "TaxID"] = "81-3301345"
         #self.oaTemplate.at[self.rowIndex, "Session"] = _claim[0]["ACCESSION_NUMBER"]
+
+
 
         for i in range(len(_diagCodeList)):
             self.oaTemplate.at[self.rowIndex, "DiagCode" + str(i + 1)] = _diagCodeList[i]

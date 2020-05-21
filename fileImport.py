@@ -1,6 +1,9 @@
 import csv
 import globals as g
 import pandas as pd
+import DBModule as db
+
+
 
 if g.mode == "I":
     import constants as con
@@ -16,6 +19,7 @@ class fileClass:
 
         self.filePath = "input/"
         self.inputFileName = ""
+
 
     def __numIn(self, s):
         return any(i.isdigit() for i in s)
@@ -82,7 +86,7 @@ class fileClass:
             # creating a csv reader object
             csvreader = csv.reader(csvfile)
 
-            with open('scratch/addressFixed.csv', "w", newline='') as result:
+            with open('scratch/parsed4.csv', "w", newline='') as result:
                 writer = csv.writer(result)
 
                 for row in csvreader:
@@ -92,6 +96,23 @@ class fileClass:
 
                     writer.writerow(row)
                 result.close()
+
+    def parseForRan(self, _accession):
+        database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
+
+        with open('scratch/parsed4.csv', 'r') as csvfile:
+            # creating a csv reader object
+            csvreader = csv.reader(csvfile)
+
+            with open('scratch/addressFixed.csv', "w", newline='') as result:
+                writer = csv.writer(result)
+
+                for row in csvreader:
+                    if database.didRun(row[con.ACCESSION_NUMBER])  == False:
+                         writer.writerow(row)
+                    else:
+                        print("Accession " + row[con.ACCESSION_NUMBER] + " Ran")
+
 
 
 
@@ -138,6 +159,12 @@ class fileClass:
 
     def get(self):
 
-        self.dataset = pd.read_csv("scratch/addressFixed.csv", header=None)
+        try:
+            self.dataset = pd.read_csv("scratch/addressFixed.csv", header=None)
+            return (self.dataset)
 
-        return (self.dataset)
+        except:
+            print("There is no Accessions number to run")
+            exit(10)
+
+

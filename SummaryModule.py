@@ -1,4 +1,7 @@
+import DBModule as db
+
 class summaryClass:
+
 
 
 
@@ -9,9 +12,13 @@ class summaryClass:
         self.pdf.set_auto_page_break(False)
         self.currentRow = 0
         self.claimCount = 1
+        self.database = db.database_class("rjrobinson.net", "rjrob_admin", "hapkido", "rjrob_vernonDB")
+
 
     def writeClaim(self, claim, diagCodes):
 
+
+        self.database.insertAccession(claim.rowList[0]["ACCESSION_NUMBER"])
 
         self.pdf.set_font('Arial', '', 8)
         self.pdf.set_xy(5, self.currentRow)
