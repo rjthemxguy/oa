@@ -63,6 +63,37 @@ class fileClass:
 
                 result.close()
 
+    def parseForBadSubID(self, issue, fileName):
+        with open('scratch/parsed2.csv', 'r') as csvfile:
+            # creating a csv reader object
+            csvreader = csv.reader(csvfile)
+
+            with open('scratch/parsed3.csv', "w", newline='') as result:
+                writer = csv.writer(result)
+
+                for row in csvreader:
+                    if self.__numIn(row[15]) == True:
+                        writer.writerow(row)
+
+                result.close()
+
+    def parseForBadAddress(self, issue, fileName):
+        with open('scratch/parsed3.csv', 'r') as csvfile:
+            # creating a csv reader object
+            csvreader = csv.reader(csvfile)
+
+            with open('scratch/addressFixed.csv', "w", newline='') as result:
+                writer = csv.writer(result)
+
+                for row in csvreader:
+                    if "SUITE" in row[con.SUITE_FIX_1]:
+                        row[con.SUITE_FIX_1 - 1] = row[con.SUITE_FIX_1 - 1] + row[con.SUITE_FIX_1]
+                        del row[con.SUITE_FIX_1]
+
+                    writer.writerow(row)
+                result.close()
+
+
 
     def fixAddress(self, fileName):
 
