@@ -8,7 +8,6 @@ import mysql.connector
 import DBModule as db
 import pandas as pd
 
-
 init()
 
 
@@ -20,10 +19,6 @@ class claimClass:
         self.assignedDiagCodes = []
         self.EMGList = []
         self.diagEntryList = []
-
-        
-
-
 
     def doSummaryFile(self):
 
@@ -37,13 +32,11 @@ class claimClass:
         pdf.cell(5, 40, 'Claim Summary')
         pdf.output('tuto1.pdf', 'F')
 
-
     def loadPrices(self):
         database = db.database_class()
 
         for row in self.rowList:
             price = database.getPrice(str(row["CPT"]))
-
 
             try:
                 row["PRICE"] = price[0]
@@ -51,12 +44,42 @@ class claimClass:
                 pass
 
     def setMedicare(self):
-            g.mode = "M"
+        g.mode = "M"
+
+    def getInsInfo(self, numofClaims, claimsProcessed):
+
+        system("clear")
+        print("Claim " + str(claimsProcessed) + " of " + str(numofClaims))
+        print()
+        print(Fore.GREEN + "Please select the correct Payer info for each claim\n")
+        print(Fore.MAGENTA + "ACCESSION #: " + str(self.accession_number) + "\n")
+        print(Fore.GREEN + "Patient: " + self.rowList[0]["PATIENT_FIRST"] + " " + self.rowList[0]["PATIENT_LAST"] + "\n")
+        print(Fore.YELLOW + self.rowList[0]["INSURANCE_PLAN_NAME"])
+        print()
+
+        while True:
+            print("Enter Payer ID below:")
+            payerID = input()
+
+            while True:
+                print("Is this the correct payer ID: " + str(payerID))
+                x = str(input())
+                if x == "y":
+                    break
+                if x == "n":
+                    break
+            if x == "n":
+                continue
+
+            if x == "y":
+                break
+
+        for row in self.rowList:
+            row["INSURANCE_PAYER_ID"] = payerID
+
+
 
     def setDaigCodes(self, numofClaims, claimsProcessed):
-
-
-
 
         EMGCount = 0
         pointerList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]
@@ -92,7 +115,7 @@ class claimClass:
                     if x in self.diagEntryList:
                         self.assignedDiagCodes.append(self.diagCodeList[x - 1])
                         self.EMGList.append(row["EMG"])
-                        row["DIAG_POINTER"] = pointerList[x-1]
+                        row["DIAG_POINTER"] = pointerList[x - 1]
                         break
 
                     else:
@@ -111,7 +134,6 @@ class claimClass:
 
                     print("\n" + Fore.GREEN + "Press [Y] to accept or [R] to re-code")
 
-
             allowedKeys = ["Y", "y", "R", "r"]
 
             while True:
@@ -122,7 +144,6 @@ class claimClass:
                     print("Please select [Y] or [R]")
                     continue
 
-
             if x == "y":
                 break
 
@@ -132,8 +153,6 @@ class claimClass:
                 self.EMGList = []
                 self.diagEntryList = []
                 continue
-
-
 
     def addRow(self, claimRow):
 
